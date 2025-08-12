@@ -1,0 +1,246 @@
+/* Body and Layout */
+body {
+    font-family: sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #ffffff;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: width 0.3s ease;
+    position: fixed;
+    height: 100%;
+    z-index: 1000;
+}
+
+.logo-box {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    color: #555;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-menu li a:hover,
+.sidebar-menu li.active a {
+    background-color: #4e73df;
+    color: #ffffff;
+}
+
+.sidebar-menu li a i {
+    margin-right: 15px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px; /* Offset for the sidebar */
+    transition: margin-left 0.3s ease;
+}
+
+/* Header */
+.dashboard-header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.search-input {
+    width: 300px;
+    border-radius: 50px;
+    background-color: #f0f2f5;
+    border: none;
+    padding: 8px 20px;
+    margin-left: 20px;
+}
+
+.profile-img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+/* Dashboard Cards */
+.card {
+    border-radius: 10px;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background-color: #ffffff; /* Override for non-dashboard cards */
+    color: #000000; /* Override for non-dashboard cards */
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.card-text {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.card-footer-text {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.card-icon {
+    font-size: 3rem;
+    opacity: 0.2;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.card-purple {
+    background: linear-gradient(45deg, #8a2be2, #4b0082);
+    color: #ffffff;
+}
+
+.card-red {
+    background: linear-gradient(45deg, #ff6347, #dc143c);
+    color: #ffffff;
+}
+
+.card-orange {
+    background: linear-gradient(45deg, #ffa500, #ff4500);
+    color: #ffffff;
+}
+
+.card-blue {
+    background: linear-gradient(45deg, #1e90ff, #00bfff);
+    color: #ffffff;
+}
+
+/* Customers Page Specific Styles */
+#customerTableBody tr:hover {
+    background-color: #f1f1f1;
+}
+
+#customerTableBody td {
+    vertical-align: middle;
+}
+/* Worklogs Page Specific Styles */
+#worklogTableBody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* ========================
+   Footer
+   ======================== */
+
+.footer {
+    width: 100%;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    color: #6c757d;
+}
+
+/* ========================
+   Media Queries for Responsiveness
+   ======================== */
+
+/* For smaller laptops and tablets */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 80px; /* Reduce sidebar width */
+    }
+
+    .sidebar .logo-box h4 {
+        display: none; /* Hide the logo text */
+    }
+    
+    .sidebar-menu li a {
+        padding: 15px 10px; /* Adjust padding for icon-only display */
+        justify-content: center; /* Center the icons */
+    }
+
+    .sidebar-menu li a span {
+        display: none; /* Hide the link text */
+    }
+    
+    .sidebar-menu li a i {
+        margin: 0; /* Remove margin from icons */
+    }
+
+    .main-content {
+        margin-left: 80px; /* Adjust main content margin */
+    }
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 250px;
+        transform: translateX(-100%); /* Hide sidebar off-screen */
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.active {
+        transform: translateX(0); /* Show sidebar when active */
+    }
+
+    .main-content {
+        margin-left: 0; /* No margin on mobile */
+    }
+
+    .dashboard-header .search-input {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .dashboard-header .header-right {
+        display: none; /* Hide header-right on mobile for a cleaner look */
+    }
+    
+    .dashboard-header .menu-toggle {
+        display: block; /* Show the menu toggle button */
+    }
+}
